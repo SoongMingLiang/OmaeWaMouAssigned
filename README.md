@@ -26,7 +26,7 @@ Don't get me wrong - I love my job! This is just my way of coping with the ~~end
 - **React** - Because your pain deserves reactive components
 - **Tailwind CSS** - For styling your misery beautifully
 - **shadcn/ui** - Beautiful UI components for your beautiful suffering
-- **TypeScript** - Adding types to your pain
+- **JavaScript** - Adding chaos to your code, one undefined at a time.
 
 ### API Integration
 - **GitHub API** - Source of all notifications and assignments
@@ -111,7 +111,7 @@ npm run dev
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.txt) file for details.
 
 ## FAQ
 
@@ -127,5 +127,7 @@ A: That's the neat part, there isn't.
 ## Contact
 
 Create an issue or submit a PR. We're all in this together.
+
+Code updates may occasionally grace this repo, but only when my tickets mercifully decide to take a coffee break.
 
 Remember: Omae Wa Mou Assigned
