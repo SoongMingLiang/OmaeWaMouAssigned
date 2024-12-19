@@ -1,7 +1,28 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+    DialogFooter,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button"
 
-export default function Tickets() {
+export default function Tickets({ issues, error }) {
+    if (error) {
+        return <div>{error}</div>;
+    }
+
     return (
         <AuthenticatedLayout
             header={
@@ -13,13 +34,32 @@ export default function Tickets() {
             <Head title="Tickets" />
 
             <div className="py-12">
-                <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900">
-                            Tickets
-                        </div>
+                {issues.map((issue) => (
+                    <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 pt-2" key={issue?.id}>
+                        <Card>
+                            <CardHeader>
+                                <CardTitle asChild><a href={issue?.html_url} className="hover:underline" target="_blank">{issue?.title} #{issue?.number}</a></CardTitle>
+                                <CardDescription>{issue?.repository?.full_name}</CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <Dialog >
+                                    <DialogTrigger asChild><Button variant="outline">Mark As Resolve</Button></DialogTrigger>
+                                    <DialogContent>
+                                        <DialogHeader>
+                                            <DialogTitle>Are you absolutely sure?</DialogTitle>
+                                            <DialogDescription>
+                                                This action will mark the issue as resolved and store into database for further analysis purposes.
+                                            </DialogDescription>
+                                        </DialogHeader>
+                                        <DialogFooter>
+                                            <Button type="submit">Save changes</Button>
+                                        </DialogFooter>
+                                    </DialogContent>
+                                </Dialog>
+                            </CardContent>
+                        </Card>
                     </div>
-                </div>
+                ))}
             </div>
         </AuthenticatedLayout>
     );

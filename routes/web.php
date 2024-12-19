@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\NotificationsController;
+use App\Http\Controllers\IssuesController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -18,9 +20,7 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/tickets', function () {
-    return Inertia::render('Tickets');
-})->middleware(['auth', 'verified'])->name('tickets');
+Route::get('/tickets', [IssuesController::class, 'index'])->middleware(['auth', 'verified'])->name('tickets');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
