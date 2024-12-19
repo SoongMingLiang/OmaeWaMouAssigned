@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ProviderController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -22,9 +21,6 @@ Route::get('/dashboard', function () {
 Route::get('/tickets', function () {
     return Inertia::render('Tickets');
 })->middleware(['auth', 'verified'])->name('tickets');
-
-Route::get('/auth/redirect', [ProviderController::class, 'redirect'])->name('auth.redirect');
-Route::get('/auth/provider-callback', [ProviderController::class, 'callback'])->name('auth.provider-callback');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
